@@ -210,6 +210,7 @@ try {
       on("#pills","click",e=>{const btn=e.target.closest(".pill");if(!btn)return;document.querySelectorAll(".pill").forEach(x=>x.classList.remove("active"));btn.classList.add("active");state.category=btn.dataset.category;render()});
       on("#cartOpen","click",openCart); on("#cartClose","click",closeCart); on("#cartBackdrop","click",closeCart);
       on("#moderatorOpen","click",()=>{if(isModerator()){$("#moderatorShell").classList.add("open");location.hash="moderator";renderAdminProducts();renderPaymentPreview()}else openPassword()});
+      on('a[href="#moderator"]',"click",e=>{e.preventDefault();openPassword()});
       on("#passwordCancel","click",()=>$("#passwordModal").classList.remove("open")); on("#logoutBtn","click",logout);
       on("#viewStoreBtn","click",()=>{$("#moderatorShell").classList.remove("open");location.hash="shop";setTimeout(()=>document.querySelector("#shop")?.scrollIntoView({behavior:"smooth",block:"start"}),20)});
       on("#viewerClose","click",closeViewer); on("#viewerDone","click",closeViewer); on("#viewerModal","click",e=>{if(e.target.id==="viewerModal")closeViewer()});
