@@ -72,6 +72,7 @@
 
   <div class="modal" id="checkoutModal" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle"><div class="modal-card"><h3 id="checkoutTitle">Checkout</h3><p>Enter your email, then use the payment receiving details saved by the Moderator.</p><div class="payment-preview" id="checkoutPayment">Payment details will appear here.</div><form class="form" id="checkoutForm"><input required type="email" id="email" placeholder="you@example.com" aria-label="Email" /><input type="text" id="note" placeholder="Optional order note" aria-label="Order note" /></form><div class="modal-actions"><button class="ghost-btn" id="checkoutCancel" type="button">Cancel</button><button class="primary-btn" id="checkoutConfirm" type="button">Create order</button></div><div class="status" id="checkoutResult"></div></div></div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script>
     // NOTE: A password embedded in a static HTML file is NOT a secure authentication system.
     // It only creates a convenience gate for this browser-based demo. Use a backend auth service for real security.
@@ -82,6 +83,13 @@
     const DB_NAME = "otaku3d-files-db";
     const DB_VERSION = 1;
 
+    const SUPABASE_URL = "https://rxofqeehfohtdmjzrcsg.supabase.co/rest/v1/";
+    const SUPABASE_KEY = "sb_publishable_zFxsUAoJ3smmwQBEyfxGag_7-VgJBz5";
+
+    const supabase = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
     const demoProducts = [
       {id:"demo-1",name:"Sora — Neon Ronin",price:39,category:"Cyber",tags:["VRM","FBX","4K"],desc:"Sharp neon styling, layered outfit, and a sleek sci-fi silhouette.",variant:"v1",demo:true},
       {id:"demo-2",name:"Mika — Sakura Pulse",price:29,category:"VTube",tags:["VRM","Blendshapes","PNG"],desc:"Soft streetwear energy with a bright pink cyber-sakura palette.",variant:"v2",demo:true},
