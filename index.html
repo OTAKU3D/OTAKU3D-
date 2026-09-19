@@ -86,10 +86,16 @@
     const SUPABASE_URL = "https://rxofqeehfohtdmjzrcsg.supabase.co/rest/v1/";
     const SUPABASE_KEY = "sb_publishable_zFxsUAoJ3smmwQBEyfxGag_7-VgJBz5";
 
-    const supabase = window.supabase.createClient(
+    let supabase = null;
+
+try {
+  supabase = window.supabase.createClient(
     SUPABASE_URL,
     SUPABASE_KEY
-);
+  );
+} catch (err) {
+  console.warn("Supabase connection not ready:", err);
+}
     const demoProducts = [
       {id:"demo-1",name:"Sora — Neon Ronin",price:39,category:"Cyber",tags:["VRM","FBX","4K"],desc:"Sharp neon styling, layered outfit, and a sleek sci-fi silhouette.",variant:"v1",demo:true},
       {id:"demo-2",name:"Mika — Sakura Pulse",price:29,category:"VTube",tags:["VRM","Blendshapes","PNG"],desc:"Soft streetwear energy with a bright pink cyber-sakura palette.",variant:"v2",demo:true},
