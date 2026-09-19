@@ -197,6 +197,7 @@
     function init(){
       // Bind controls only after the DOM exists. All bindings are guarded so one optional
       // control cannot disable the rest of the storefront.
+      localStorage.removeItem("otaku3d-moderator-session");
       const on=(sel,event,fn,opts)=>{const el=$(sel); if(el) el.addEventListener(event,fn,opts)};
       on("#search","input",e=>{state.search=e.target.value;render()});
       on("#sort","change",e=>{state.sort=e.target.value;render()});
